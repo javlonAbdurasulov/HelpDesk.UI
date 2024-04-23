@@ -11,4 +11,8 @@
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HelpDesk.Domain\HelpDesk.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
