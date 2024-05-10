@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace HelpDesk.Domain.Enum
 {
-	public enum Status:byte
+	public enum Korpus
 	{
-		Done,
-		Running,
-		Canceled,
-
-		//
+		A,
+		B, 
+		C, 
+		D, 
+		E, 
+		F
 	}
 }

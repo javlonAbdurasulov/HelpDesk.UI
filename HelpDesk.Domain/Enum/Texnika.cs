@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace HelpDesk.Domain.Enum
 {
-	public enum Status:byte
+	public enum Texnika
 	{
-		Done,
-		Running,
-		Canceled,
-
+		Proektor
 		//
 	}
 }

@@ -12,6 +12,9 @@ namespace HelpDesk.Domain.Entity
         public int Id{ get; set; }
 		public Status Status { get; set; }
 		public string Title { get; set; }
+		public string? Description { get; set; }
 		public Enum.Action Name { get; set; }
+		public Forma Forma{ get; set; }
+		public User User{ get; set; }
 	}
 }
