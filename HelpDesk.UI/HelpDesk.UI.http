@@ -1,6 +1,0 @@
-@HelpDesk.UI_HostAddress = http://localhost:5069
-
-GET {{HelpDesk.UI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
