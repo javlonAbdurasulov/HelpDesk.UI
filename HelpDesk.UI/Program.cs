@@ -40,6 +40,7 @@ namespace HelpDesk.UI
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
+			app.UseRouting();
 
 			app.UseHttpsRedirection();
 

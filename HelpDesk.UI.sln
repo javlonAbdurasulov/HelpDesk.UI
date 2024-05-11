@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDesk.UI", "HelpDesk.UI\HelpDesk.UI.csproj", "{7F9BA0A2-8B46-40D5-BBEC-7D8A82900B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDesk.UI", "HelpDesk.UI\HelpDesk.UI.csproj", "{7F9BA0A2-8B46-40D5-BBEC-7D8A82900B19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDesk.Application", "HelpDesk.Application\HelpDesk.Application.csproj", "{50B0F0E5-6FCB-4538-9954-378C77FC85C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDesk.Application", "HelpDesk.Application\HelpDesk.Application.csproj", "{50B0F0E5-6FCB-4538-9954-378C77FC85C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDesk.Domain", "HelpDesk.Domain\HelpDesk.Domain.csproj", "{B41A8E70-C808-420C-B566-A331C75A9701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDesk.Domain", "HelpDesk.Domain\HelpDesk.Domain.csproj", "{B41A8E70-C808-420C-B566-A331C75A9701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDesk.Infrastructure", "HelpDesk.Infrastructure\HelpDesk.Infrastructure.csproj", "{0246436F-DABE-456E-B3B2-55754DA19E97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDesk.Infrastructure", "HelpDesk.Infrastructure\HelpDesk.Infrastructure.csproj", "{0246436F-DABE-456E-B3B2-55754DA19E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
