@@ -1,4 +1,3 @@
-
 using HelpDesk.Application.Services.Interfaces;
 using HelpDesk.Infrastructure.Data;
 using HelpDesk.Infrastructure.Service;
@@ -20,13 +19,15 @@ namespace HelpDesk.UI
 			builder.Services.AddSwaggerGen();
 
 			#region Db
-			builder.Services.AddDbContext<AppDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDb")));
 
+			builder.Services.AddDbContext<AppDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("ShokirsDb")));
 			#endregion
 
 			#region Scoped
+
 			builder.Services.AddScoped<IFormService, FormService>();
 			builder.Services.AddScoped<ILetterService,LetterService>();
+
 			#endregion
 
 
