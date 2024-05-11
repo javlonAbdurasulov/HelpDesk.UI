@@ -1,4 +1,9 @@
 
+using HelpDesk.Application.Services.Interfaces;
+using HelpDesk.Infrastructure.Data;
+using HelpDesk.Infrastructure.Service;
+using Microsoft.EntityFrameworkCore;
+
 namespace HelpDesk.UI
 {
 	public class Program
@@ -13,6 +18,17 @@ namespace HelpDesk.UI
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+
+			#region Db
+			builder.Services.AddDbContext<AppDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDb")));
+
+			#endregion
+
+			#region Scoped
+			builder.Services.AddScoped<IFormService, FormService>();
+			builder.Services.AddScoped<ILetterService,LetterService>();
+			#endregion
+
 
 			var app = builder.Build();
 
