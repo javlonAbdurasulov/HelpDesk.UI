@@ -1,5 +1,6 @@
 ﻿using HelpDesk.Application.Services.Interfaces;
 using HelpDesk.Domain.Entity;
+using HelpDesk.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,20 @@ namespace HelpDesk.Infrastructure.Service
 {
 	public class FormService : IFormService
 	{
-		public Task<bool> Create(Forma obj)
+		public AppDbContext _db;
+        public FormService(AppDbContext Context)
+        {
+            _db = Context;
+        }
+        public async Task<int> Create(Forma obj)
 		{
-			throw new NotImplementedException();
-		}
+            await _db.Formas.AddAsync(obj);
+            await _db.SaveChangesAsync();
+
+            return obj.Id;
+
+
+        }
 
 		public Task<Forma> GetById(int Id)
 		{

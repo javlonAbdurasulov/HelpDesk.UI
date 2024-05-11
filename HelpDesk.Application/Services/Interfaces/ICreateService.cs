@@ -8,6 +8,6 @@ namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface ICreateService<T>
 	{
-		public Task<bool> Create(T obj);
+		public Task<int> Create(T obj);
 	}
 }
