@@ -1,4 +1,6 @@
 ﻿using HelpDesk.Application.Services.Interfaces;
+using HelpDesk.Domain;
+using HelpDesk.Domain.DTO.Letter;
 using HelpDesk.Domain.Entity;
 using HelpDesk.Infrastructure.Data;
 using System;
@@ -18,15 +20,20 @@ namespace HelpDesk.Infrastructure.Service
 			_db = db;
             FormService =formService;
         }
-        public async Task<int> Create(Letter obj)
+        public async Task<Guid> Create(LetterCreateDTO letterInCreateDto)
 		{
-		int formId = await FormService.Create(obj.Forma);
 
-			await _db.Letters.AddAsync(obj);
+            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, letterInCreateDto.Description, letterInCreateDto.Title, letterInCreateDto.ActionType);
+
+            string? Errors = string.Join(" ", newLetter.Item2);
+
+            if (newLetter.Item2.Count() != 0) return 0;
+
+
+			await _db.Letters.AddAsync(newLetter.Item1);
 			await _db.SaveChangesAsync();
 
-            return obj.Id;
-
+            return newLetter.Item1.Id;
         }
 
 		public Task<bool> Delete(int Id)

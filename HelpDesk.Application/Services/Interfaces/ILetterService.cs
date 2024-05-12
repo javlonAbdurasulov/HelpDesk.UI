@@ -1,4 +1,5 @@
-﻿using HelpDesk.Domain.Entity;
+﻿using HelpDesk.Domain.DTO.Letter;
+using HelpDesk.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,10 @@ using System.Threading.Tasks;
 namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface ILetterService:
-		ICreateService<Letter>,
+		ICreateService<LetterCreateDTO>,
 		IUpdateService<Letter>,
 		IGetAllService<Letter>,
 		IGetByIdService<Letter>,
 		IDeleteService
-	{
-
-	}
+	{	}
 }

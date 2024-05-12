@@ -1,4 +1,5 @@
 ﻿using HelpDesk.Application.Services.Interfaces;
+using HelpDesk.Domain.DTO.Forma;
 using HelpDesk.Domain.Entity;
 using HelpDesk.Infrastructure.Data;
 using System;
@@ -16,7 +17,7 @@ namespace HelpDesk.Infrastructure.Service
         {
             _db = Context;
         }
-        public async Task<int> Create(Forma obj)
+        public async Task<int> Create(FormaCreateDTO obj)
 		{
             await _db.Formas.AddAsync(obj);
             await _db.SaveChangesAsync();

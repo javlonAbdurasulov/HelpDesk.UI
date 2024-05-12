@@ -1,7 +1,9 @@
 ﻿using HelpDesk.Application.Services.Interfaces;
 using HelpDesk.Domain;
+using HelpDesk.Domain.DTO.Letter;
 using HelpDesk.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace HelpDesk.UI.Controllers
 {
@@ -16,10 +18,12 @@ namespace HelpDesk.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ResponseModel<Letter>> CreateLetter(Letter letter)
+        public async Task<ResponseModel<Letter>> CreateLetter(LetterCreateDTO letterInCreateDto)
         {
-            await _letterService.Create(letter);
-            return new ResponseModel<Letter>(letter);
+
+               var id = await _letterService.Create(letterInCreateDto);
+
+            return new ResponseModel<Letter>(newLetter.Item1);
         }
         
      

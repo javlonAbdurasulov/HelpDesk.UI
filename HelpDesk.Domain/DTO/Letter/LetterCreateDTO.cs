@@ -6,15 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelpDesk.Domain.DTO
+namespace HelpDesk.Domain.DTO.Letter
 {
     public class LetterCreateDTO
     {
-        public Status Status { get; set; }
+        public Enum.Status Status { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
-        public Enum.Action Name { get; set; }
-        public Forma Forma { get; set; }
-        public User User { get; set; }
+        public Enum.Action ActionType { get; set; }
     }
 }
