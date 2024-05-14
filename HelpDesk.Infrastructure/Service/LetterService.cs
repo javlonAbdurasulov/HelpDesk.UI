@@ -13,27 +13,25 @@ namespace HelpDesk.Infrastructure.Service
 {
 	public class LetterService : ILetterService
 	{
-		public IFormService FormService;
 		public AppDbContext _db;
-        public LetterService(IFormService formService,AppDbContext db)
+        public LetterService(AppDbContext db)
         {
 			_db = db;
-            FormService =formService;
         }
-        public async Task<Guid> Create(LetterCreateDTO letterInCreateDto)
+        public async Task<ResponseModel<Letter>> Create(LetterCreateDTO letterInCreateDto)
 		{
 
             var newLetter = Letter.CreateLetter(letterInCreateDto.Status, letterInCreateDto.Description, letterInCreateDto.Title, letterInCreateDto.ActionType);
 
             string? Errors = string.Join(" ", newLetter.Item2);
 
-            if (newLetter.Item2.Count() != 0) return 0;
+            if (newLetter.Item2.Count() != 0) return new ResponseModel<Letter>(Errors, System.Net.HttpStatusCode.Conflict);
 
 
 			await _db.Letters.AddAsync(newLetter.Item1);
 			await _db.SaveChangesAsync();
 
-            return newLetter.Item1.Id;
+            return new ResponseModel<Letter>(newLetter.Item1);
         }
 
 		public Task<bool> Delete(int Id)

@@ -20,10 +20,8 @@ namespace HelpDesk.UI.Controllers
         [HttpPost]
         public async Task<ResponseModel<Letter>> CreateLetter(LetterCreateDTO letterInCreateDto)
         {
-
-               var id = await _letterService.Create(letterInCreateDto);
-
-            return new ResponseModel<Letter>(newLetter.Item1);
+               var letterResponseModel = await _letterService.Create(letterInCreateDto);
+               return letterResponseModel;
         }
         
      
