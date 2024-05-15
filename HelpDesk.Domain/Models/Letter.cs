@@ -10,8 +10,8 @@
         public Enum.Action ActionType { get; set; }
         public int FormaId { get; set; }
         public Forma Forma { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public int? UserId { get; set; }
+        public User? User { get; set; }
         
 
         public static Letter CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType, int formaId,int UserId)
