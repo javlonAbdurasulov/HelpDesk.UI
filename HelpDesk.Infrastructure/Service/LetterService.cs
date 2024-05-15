@@ -32,7 +32,10 @@ namespace HelpDesk.Infrastructure.Service
 				Texnika = letterInCreateDto.TexnikaForm
 			};
 			var forma = await _formService.Create(formCreateDto);
-            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, letterInCreateDto.Description, letterInCreateDto.Title, letterInCreateDto.ActionType,forma.Result);
+
+            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, 
+				letterInCreateDto.Description, letterInCreateDto.Title, 
+				letterInCreateDto.ActionType,forma.Result.Id);
 
 			await _db.Letters.AddAsync(newLetter);
 			await _db.SaveChangesAsync();
