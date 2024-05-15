@@ -12,16 +12,16 @@
         public Forma Forma { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        
 
-
-        public static (Letter, IEnumerable<string>) CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType)
+        public static Letter CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType, Forma forma)
         {
-            IEnumerable<string> errors = new List<string>();
             var Letter = new Letter();
             Letter.Status   = status;
             Letter.Title= title;    
-            Letter.ActionType = actionType; 
-            return (Letter, errors);
+            Letter.ActionType = actionType;
+            Letter.Forma = forma;
+            return Letter;
         }
     }
 }

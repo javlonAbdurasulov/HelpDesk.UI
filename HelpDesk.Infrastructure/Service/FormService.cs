@@ -18,14 +18,10 @@ namespace HelpDesk.Infrastructure.Service
         {
             var newForma = Forma.CreateForma(obj.Description, obj.Texnika, obj.Korpus, obj.Kabinet);
 
-            string Errors = string.Join(" ", newForma.Item2);
-
-            if (newForma.Item2.Count() != 0) { return new ResponseModel<Forma>(Errors, System.Net.HttpStatusCode.Conflict); }
-
-            await _db.Formas.AddAsync(newForma.Item1);
+            await _db.Formas.AddAsync(newForma);
             await _db.SaveChangesAsync();
 
-            return new ResponseModel<Forma>(newForma.Item1);
+            return new ResponseModel<Forma>(newForma);
         }
 
         public Task<Forma> GetById(int Id)

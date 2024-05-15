@@ -1,5 +1,6 @@
 ﻿using HelpDesk.Application.Services.Interfaces;
 using HelpDesk.Domain;
+using HelpDesk.Domain.DTO.Forma;
 using HelpDesk.Domain.DTO.Letter;
 using HelpDesk.Domain.Entity;
 using HelpDesk.Infrastructure.Data;
@@ -14,24 +15,29 @@ namespace HelpDesk.Infrastructure.Service
 	public class LetterService : ILetterService
 	{
 		public AppDbContext _db;
-        public LetterService(AppDbContext db)
-        {
-			_db = db;
-        }
-        public async Task<ResponseModel<Letter>> Create(LetterCreateDTO letterInCreateDto)
+		public IFormService _formService;
+		public LetterService(AppDbContext db, IFormService formService)
 		{
+			_db = db;
+			_formService = formService;
+		}
+		public async Task<ResponseModel<Letter>> Create(LetterCreateDTO letterInCreateDto)
+		{
+			FormaCreateDTO formCreateDto= new FormaCreateDTO()
+			{
+				DateTime = DateTime.Now,
+				Description = letterInCreateDto.DescriptionForm,
+				Kabinet = letterInCreateDto.KabinetForm,
+				Korpus = letterInCreateDto.KorpusForm,
+				Texnika = letterInCreateDto.TexnikaForm
+			};
+			var forma = await _formService.Create(formCreateDto);
+            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, letterInCreateDto.Description, letterInCreateDto.Title, letterInCreateDto.ActionType,forma.Result);
 
-            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, letterInCreateDto.Description, letterInCreateDto.Title, letterInCreateDto.ActionType);
-
-            string? Errors = string.Join(" ", newLetter.Item2);
-
-            if (newLetter.Item2.Count() != 0) return new ResponseModel<Letter>(Errors, System.Net.HttpStatusCode.Conflict);
-
-
-			await _db.Letters.AddAsync(newLetter.Item1);
+			await _db.Letters.AddAsync(newLetter);
 			await _db.SaveChangesAsync();
 
-            return new ResponseModel<Letter>(newLetter.Item1);
+            return new ResponseModel<Letter>(newLetter);
         }
 
 		public Task<bool> Delete(int Id)

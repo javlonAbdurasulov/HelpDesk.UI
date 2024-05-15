@@ -14,5 +14,12 @@ namespace HelpDesk.Domain.DTO.Letter
         public string Title { get; set; }
         public string? Description { get; set; }
         public Enum.Action ActionType { get; set; }
-    }
+
+		//Forma
+		public DateTime DateTimeForm { get; set; }
+		public string? DescriptionForm { get; set; }
+		public Texnika TexnikaForm { get; set; }
+		public Korpus KorpusForm { get; set; }
+		public string KabinetForm { get; set; }
+	}
 }
