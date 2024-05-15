@@ -20,7 +20,8 @@ namespace HelpDesk.UI
 
 			#region Db
 
-			builder.Services.AddDbContext<AppDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("JavlonDb")));
+			builder.Services.AddDbContext<AppDbContext>(option => 
+			option.UseNpgsql(builder.Configuration.GetConnectionString("JavlonDb")));
 			
 			#endregion
 

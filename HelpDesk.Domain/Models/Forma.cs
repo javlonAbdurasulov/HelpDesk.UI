@@ -6,8 +6,8 @@ namespace HelpDesk.Domain.Entity
     {
         
         public int Id { get; set; }
-        public DateTime DateTime { get; set; } = DateTime.Now; 
-        public string? Description { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.UtcNow;
+		public string? Description { get; set; }
         public Texnika Texnika { get; set; }
         public Korpus Korpus { get; set; }
         public string Kabinet { get; set; }

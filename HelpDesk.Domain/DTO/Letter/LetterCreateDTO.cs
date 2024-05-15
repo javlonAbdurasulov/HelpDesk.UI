@@ -14,6 +14,7 @@ namespace HelpDesk.Domain.DTO.Letter
         public string Title { get; set; }
         public string? Description { get; set; }
         public Enum.Action ActionType { get; set; }
+        public int UserId { get; set; }
 
 		//Forma
 		public DateTime DateTimeForm { get; set; }

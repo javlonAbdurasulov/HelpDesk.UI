@@ -179,8 +179,7 @@ namespace HelpDesk.Infrastructure.Migrations
 
             modelBuilder.Entity("HelpDesk.Domain.Entity.User", b =>
                 {
-                    b.Navigation("Letter")
-                        .IsRequired();
+                    b.Navigation("Letter");
                 });
 #pragma warning restore 612, 618
         }

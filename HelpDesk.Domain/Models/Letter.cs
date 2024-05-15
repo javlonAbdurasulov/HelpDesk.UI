@@ -14,13 +14,14 @@
         public User User { get; set; }
         
 
-        public static Letter CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType, int formaId)
+        public static Letter CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType, int formaId,int UserId)
         {
             var Letter = new Letter();
             Letter.Status   = status;
             Letter.Title= title;    
             Letter.ActionType = actionType;
             Letter.FormaId = formaId;
+            Letter.UserId = UserId;
             return Letter;
         }
     }

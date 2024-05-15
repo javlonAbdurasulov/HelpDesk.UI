@@ -21,6 +21,11 @@ namespace HelpDesk.Infrastructure.Service
 			_db = db;
 			_formService = formService;
 		}
+
+		//
+		// Nado sozdat UserController potomushto Letter nelzya sozdat bez usera
+		//
+
 		public async Task<ResponseModel<Letter>> Create(LetterCreateDTO letterInCreateDto)
 		{
 			FormaCreateDTO formCreateDto= new FormaCreateDTO()
@@ -35,7 +40,7 @@ namespace HelpDesk.Infrastructure.Service
 
             var newLetter = Letter.CreateLetter(letterInCreateDto.Status, 
 				letterInCreateDto.Description, letterInCreateDto.Title, 
-				letterInCreateDto.ActionType,forma.Result.Id);
+				letterInCreateDto.ActionType,forma.Result.Id,letterInCreateDto.UserId);
 
 			await _db.Letters.AddAsync(newLetter);
 			await _db.SaveChangesAsync();

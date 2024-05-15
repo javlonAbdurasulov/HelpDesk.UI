@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HelpDesk.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240514054859_initDb")]
+    [Migration("20240515075426_initDb")]
     partial class initDb
     {
         /// <inheritdoc />
@@ -182,8 +182,7 @@ namespace HelpDesk.Infrastructure.Migrations
 
             modelBuilder.Entity("HelpDesk.Domain.Entity.User", b =>
                 {
-                    b.Navigation("Letter")
-                        .IsRequired();
+                    b.Navigation("Letter");
                 });
 #pragma warning restore 612, 618
         }
