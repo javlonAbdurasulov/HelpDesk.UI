@@ -30,7 +30,7 @@ namespace HelpDesk.Infrastructure.Service
 		{
 			FormaCreateDTO formCreateDto= new FormaCreateDTO()
 			{
-				DateTime = DateTime.Now,
+				DateTime = DateTime.UtcNow,
 				Description = letterInCreateDto.DescriptionForm,
 				Kabinet = letterInCreateDto.KabinetForm,
 				Korpus = letterInCreateDto.KorpusForm,
