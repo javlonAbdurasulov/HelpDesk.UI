@@ -14,12 +14,10 @@
         public User? User { get; set; }
         
 
-        public static Letter CreateLetter(Enum.Status status, string description,string title, Enum.Action actionType, int formaId,int UserId)
+        public static Letter CreateLetter(string description,string title, int formaId,int UserId)
         {
             var Letter = new Letter();
-            Letter.Status   = status;
-            Letter.Title= title;    
-            Letter.ActionType = actionType;
+            Letter.Title= title;  
             Letter.FormaId = formaId;
             Letter.UserId = UserId;
             return Letter;

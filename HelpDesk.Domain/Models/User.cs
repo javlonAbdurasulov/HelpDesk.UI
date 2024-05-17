@@ -8,7 +8,7 @@ namespace HelpDesk.Domain.Entity
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public Role Role { get; set; }
-        public Letter? Letter { get; set; }
+        public List<Letter?>? Letter { get; set; }
 
         public static (User User, IEnumerable<string> Error) CreateUser(int id, string fullName, string phoneNumber, string email)
         {

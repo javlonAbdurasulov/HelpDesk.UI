@@ -38,9 +38,9 @@ namespace HelpDesk.Infrastructure.Service
 			};
 			var forma = await _formService.Create(formCreateDto);
 
-            var newLetter = Letter.CreateLetter(letterInCreateDto.Status, 
+            var newLetter = Letter.CreateLetter(
 				letterInCreateDto.Description, letterInCreateDto.Title, 
-				letterInCreateDto.ActionType,forma.Result.Id,letterInCreateDto.UserId);
+				forma.Result.Id,letterInCreateDto.UserId);
 
 			await _db.Letters.AddAsync(newLetter);
 			await _db.SaveChangesAsync();
