@@ -25,7 +25,7 @@ namespace HelpDesk.Infrastructure.Service
             return new ResponseModel<Forma>(newForma);
         }
 
-        public async Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int? Id)
         {
             var deleteForm = _db.Formas.FirstOrDefault(x => x.Id == Id);
             if (deleteForm == null)

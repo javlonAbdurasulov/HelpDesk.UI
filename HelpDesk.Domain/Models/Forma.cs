@@ -11,7 +11,6 @@ namespace HelpDesk.Domain.Entity
         public Texnika Texnika { get; set; }
         public Korpus Korpus { get; set; }
         public string Kabinet { get; set; }
-        public Letter Letter { get; set; }
 
         public static Forma CreateForma(string description, Texnika texnika, Korpus korpus, string kabinet)
         {

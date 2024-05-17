@@ -11,7 +11,6 @@ namespace HelpDesk.Domain.DTO.Letter
     public class LetterCreateDTO
     {
         public string Title { get; set; }
-        public string? Description { get; set; }
         public int UserId { get; set; }
 
 		//Forma

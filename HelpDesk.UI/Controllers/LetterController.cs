@@ -33,6 +33,11 @@ namespace HelpDesk.UI.Controllers
         [HttpPut]
         public async Task<bool> UpdateLetter(Letter letter)
         {
+            //kak ona rabotayet
+            // polzovatel viberayet zayavku i najimayet UPDATE
+            // togda v servere s frontend prosit snachalo GetById i etotje Letter kotoriy vernulsya zapolnyayet ix formu avtomatom
+            // nujniye mesta izmenyayet i vozvrashayet nam i tut uje srabativayet UPDATE
+
             var UpdateLetterResponseModel = await _letterService.Update(letter);
             return UpdateLetterResponseModel;
         }

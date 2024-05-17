@@ -38,8 +38,7 @@ namespace HelpDesk.Infrastructure.Service
 			};
 			var forma = await _formService.Create(formCreateDto);
 
-            var newLetter = Letter.CreateLetter(
-				letterInCreateDto.Description, letterInCreateDto.Title, 
+            var newLetter = Letter.CreateLetter(letterInCreateDto.Title, 
 				forma.Result.Id,letterInCreateDto.UserId);
 
 			await _db.Letters.AddAsync(newLetter);
@@ -48,14 +47,15 @@ namespace HelpDesk.Infrastructure.Service
             return new ResponseModel<Letter>(newLetter);
         }
 
-		public async Task<bool> Delete(int Id)
+		public async Task<bool> Delete(int? Id)
 		{
 			var Letter = _db.Letters.FirstOrDefault(x => x.Id == Id);
 			if (Letter == null)
 			{
 				return false;
 			}
-			int DeleteformaId = Letter.FormaId;
+			int? DeleteformaId = Letter.FormaId;
+			Letter.FormaId = null;
 			var deleteFormaCheck = await _formService.Delete(DeleteformaId);
 			if (!deleteFormaCheck)
 			{

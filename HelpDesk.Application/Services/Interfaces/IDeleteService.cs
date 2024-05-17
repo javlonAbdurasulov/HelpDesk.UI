@@ -8,6 +8,6 @@ namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface IDeleteService
 	{
-		public Task<bool> Delete(int Id);
+		public Task<bool> Delete(int? Id);
 	}
 }
