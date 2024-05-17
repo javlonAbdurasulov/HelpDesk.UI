@@ -48,24 +48,63 @@ namespace HelpDesk.Infrastructure.Service
             return new ResponseModel<Letter>(newLetter);
         }
 
-		public Task<bool> Delete(int Id)
+		public async Task<bool> Delete(int Id)
 		{
-			throw new NotImplementedException();
+			var Letter = _db.Letters.FirstOrDefault(x => x.Id == Id);
+			if (Letter == null)
+			{
+				return false;
+			}
+			int DeleteformaId = Letter.FormaId;
+			var deleteFormaCheck = await _formService.Delete(DeleteformaId);
+			if (!deleteFormaCheck)
+			{
+				//net takoy formi znachit pismo ne pravilno sozdavalas
+				// napisat bi Log tut
+				// a na udaleniye bez raznitsi vsyo ravno udalyayem je
+			}
+			Letter.UserId = null;
+			
+			_db.Letters.Remove(Letter);
+
+			_db.SaveChanges();
+
+			return true;
 		}
 
-		public Task<IEnumerable<Letter>> GetAll()
+		public async Task<IEnumerable<Letter>> GetAll()
 		{
-			throw new NotImplementedException();
+			return _db.Letters.ToList();
 		}
 
-		public Task<Letter> GetById(int Id)
+		public async Task<ResponseModel<Letter>> GetById(int Id)
 		{
-			throw new NotImplementedException();
-		}
+            var letter = _db.Letters.FirstOrDefault(x => x.Id == Id);
+            if (letter == null)
+            {
+                return new ResponseModel<Letter>(letter, System.Net.HttpStatusCode.NotFound);
+            }
 
-		public Task<bool> Update(Letter obj)
+            return new ResponseModel<Letter>(letter);
+        }
+
+		public async Task<bool> Update(Letter obj)
 		{
-			throw new NotImplementedException();
-		}
+            var LetterForUpdate = _db.Letters.FirstOrDefault(x => x.Id == obj.Id);
+            if (LetterForUpdate == null)
+            {
+                return false;
+            }
+            LetterForUpdate.Description = obj.Description;
+            LetterForUpdate.Title = obj.Title;
+            LetterForUpdate.Status = obj.Status;
+			var updateFormaCheck = await _formService.Update(LetterForUpdate.Forma);
+			if (!updateFormaCheck)
+			{
+				return false;
+			}
+            await _db.SaveChangesAsync();
+            return true;
+        }
 	}
 }

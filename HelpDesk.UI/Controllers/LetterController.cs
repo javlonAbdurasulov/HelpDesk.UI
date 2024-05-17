@@ -2,6 +2,7 @@
 using HelpDesk.Domain;
 using HelpDesk.Domain.DTO.Letter;
 using HelpDesk.Domain.Entity;
+using HelpDesk.Infrastructure.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
@@ -23,7 +24,25 @@ namespace HelpDesk.UI.Controllers
                var letterResponseModel = await _letterService.Create(letterInCreateDto);
                return letterResponseModel;
         }
-        
-     
+        [HttpDelete]
+        public async Task<bool> DeleteLetter(int Id)
+        {
+            var DeleteLetterResponseModel = await _letterService.Delete(Id);
+            return DeleteLetterResponseModel;
+        }
+        [HttpPut]
+        public async Task<bool> UpdateLetter(Letter letter)
+        {
+            var UpdateLetterResponseModel = await _letterService.Update(letter);
+            return UpdateLetterResponseModel;
+        }
+        [HttpPost]
+        public async Task<ResponseModel<Letter>> GetByIdForm(int Id)
+        {
+            var letterResponseModel = await _letterService.GetById(Id);
+            return letterResponseModel;
+        }
+
+
     }
 }

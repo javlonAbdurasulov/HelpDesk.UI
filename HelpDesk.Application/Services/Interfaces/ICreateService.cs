@@ -9,6 +9,6 @@ namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface ICreateService<T>
 	{
-		public Task<int> Create(T obj);
+		public Task<ResponseModel<T>> Create(T obj);
 	}
 }

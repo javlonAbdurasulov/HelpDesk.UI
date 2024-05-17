@@ -8,6 +8,7 @@ namespace HelpDesk.Domain.Enum
 {
 	public enum Action:byte
 	{
+		None,
 		Delete,
 		Update
 		//

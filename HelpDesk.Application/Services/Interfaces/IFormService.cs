@@ -12,7 +12,8 @@ namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface IFormService:
 		IUpdateService<Forma>,
-		IGetByIdService<Forma>
+		IGetByIdService<Forma>,
+		IDeleteService
 	{
         public Task<ResponseModel<Forma>> Create(FormaCreateDTO formCreateDTO);
     }

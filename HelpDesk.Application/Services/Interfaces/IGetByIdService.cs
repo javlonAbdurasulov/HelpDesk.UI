@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpDesk.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace HelpDesk.Application.Services.Interfaces
 {
 	public interface IGetByIdService<T>
 	{
-		public Task<T> GetById(int Id);
+		public Task<ResponseModel<T>> GetById(int Id);
 	}
 }

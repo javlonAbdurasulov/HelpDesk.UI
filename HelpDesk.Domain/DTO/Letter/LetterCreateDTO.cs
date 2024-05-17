@@ -17,7 +17,6 @@ namespace HelpDesk.Domain.DTO.Letter
         public int UserId { get; set; }
 
 		//Forma
-		public DateTime DateTimeForm { get; set; }
 		public string? DescriptionForm { get; set; }
 		public Texnika TexnikaForm { get; set; }
 		public Korpus KorpusForm { get; set; }

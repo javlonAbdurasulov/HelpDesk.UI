@@ -19,8 +19,26 @@ namespace HelpDesk.UI.Controllers
         [HttpPost]
         public async Task<ResponseModel<Forma>> CreateForm(FormaCreateDTO formInCreateDto)
         {
-            var letterResponseModel = await _formService.Create(formInCreateDto);
-            return letterResponseModel;
+            var FormaResponseModel = await _formService.Create(formInCreateDto);
+            return FormaResponseModel;
+        }
+        [HttpDelete]
+        public async Task<bool> DeleteForm(int Id)
+        {
+            var DeleteFormaResponseModel = await _formService.Delete(Id);
+            return DeleteFormaResponseModel;
+        }
+        [HttpPut]
+        public async Task<bool> UpdateForm(Forma forma)
+        {
+            var UpdateFormaResponseModel = await _formService.Update(forma);
+            return UpdateFormaResponseModel;
+        }
+        [HttpPost]
+        public async Task<ResponseModel<Forma>> GetByIdForm(int Id)
+        {
+            var FormaResponseModel = await _formService.GetById(Id);
+            return FormaResponseModel;
         }
     }
 }

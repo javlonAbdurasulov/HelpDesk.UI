@@ -8,6 +8,7 @@ namespace HelpDesk.Domain.Enum
 {
 	public enum Status:byte
 	{
+		None,
 		Done,
 		Running,
 		Canceled,
