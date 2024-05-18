@@ -8,7 +8,9 @@ namespace HelpDesk.Domain.Enum
 {
 	public enum Texnika
 	{
-		Proektor
+		Proektor,
+		Printer,
+		Kompyuter
 		//
 	}
 }

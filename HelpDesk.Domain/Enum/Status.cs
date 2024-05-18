@@ -11,7 +11,7 @@ namespace HelpDesk.Domain.Enum
 		None,
 		Done,
 		Running,
-		Canceled,
+		Canceled
 
 		//
 	}

@@ -42,7 +42,7 @@ namespace HelpDesk.UI.Controllers
             return UpdateLetterResponseModel;
         }
         [HttpPost]
-        public async Task<ResponseModel<Letter>> GetByIdForm(int Id)
+        public async Task<ResponseModel<Letter>> GetByIdLetter(int Id)
         {
             var letterResponseModel = await _letterService.GetById(Id);
             return letterResponseModel;
